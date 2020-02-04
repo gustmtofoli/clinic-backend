@@ -1,0 +1,7 @@
+
+spring:
+  application:
+    name: clinic_core
+
+server:
+  port: 8081
