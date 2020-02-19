@@ -43,11 +43,7 @@ class Postgres(ABC):
     # def update(self, updateParameters, whereClause):
     #     pass
     #
-
     @abstractmethod
-    def selectAll(self):
-        query = "SELECT * FROM " + self.table + ";"
-        self.cursor.execute(query)
-        print(query)
-
-        return self.cursor.fetchall()
+    def delete(self, id):
+        query = "DELETE FROM " + self.table + " WHERE id = " + id + ";"
+        self.__executeAndCommit(query)
