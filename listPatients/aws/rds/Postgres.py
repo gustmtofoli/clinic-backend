@@ -18,7 +18,7 @@ class Postgres(ABC):
             self.connection = connection
             return cursor, connection
         except (Exception, db.Error) as error:
-            print("Error while connecting to PostgreSQL", error)
+            print("Error while connecting to Postgres", error)
             return False
 
     def __executeAndCommit(self, query):
@@ -26,11 +26,11 @@ class Postgres(ABC):
         self.connection.commit()
 
     def __getCredentials(self):
-        user = "clinic"
-        password = "clinicdb"
-        host = "clinic.cmuzcbu8jz3p.us-east-1.rds.amazonaws.com"
+        user = "clinic_db"
+        password = "root"
+        host = "localhost"
         port = "5432"
-        database = "clinic"
+        database = "clinicdb"
 
         return user, password, host, port, database
 
@@ -46,7 +46,7 @@ class Postgres(ABC):
 
     @abstractmethod
     def selectAll(self):
-        query = "SELECT * FROM " + self.table + ";"
+        query = "SELECT * FROM " + "clinicdb2."+self.table + ";"
         self.cursor.execute(query)
         print(query)
 
